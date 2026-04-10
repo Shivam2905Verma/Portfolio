@@ -19,7 +19,7 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setClearColor(0xd5c7d1);
 
 export const camera = new THREE.PerspectiveCamera(
-  40,
+  window.innerWidth <= 768 ? 70 : 40,
   size.width / size.height,
   0.1,
   1000,

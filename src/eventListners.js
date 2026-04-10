@@ -103,6 +103,8 @@ window.addEventListener("resize", () => {
   size.width = window.innerWidth;
   size.height = window.innerHeight;
 
+  camera.fov = size.width <= 768 ? 70 : 40;
+
   camera.aspect = size.width / size.height;
   camera.updateProjectionMatrix();
 
