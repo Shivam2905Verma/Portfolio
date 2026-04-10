@@ -70,6 +70,19 @@ function handleMusicBtn() {
 musicBtn.addEventListener("click", handleMusicBtn);
 musicBtn.addEventListener("touchend", handleMusicBtn);
 
+const modelContents = document.querySelectorAll(".model-content");
+
+modelContents.forEach((e) => {
+  e.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+});
+modelContents.forEach((e) => {
+  e.addEventListener("touchend", (e) => {
+    e.stopPropagation();
+  });
+});
+
 //* Time for clock function
 function updateClock(hourHand, minuteHand) {
   const now = new Date();
