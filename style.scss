@@ -47,6 +47,12 @@ body {
   align-items: center;
 }
 
+:root {
+  --primary: #6f5f9c; /* Deep Purple (from your original) */
+  --background: #ebd7ee; /* Lavender (from your original) */
+  --accent-2: #ff8aa2; /* Sweet Pink for accents */
+}
+
 .model {
   display: none;
   position: relative;
@@ -54,30 +60,236 @@ body {
   background-color: #ebd7ee;
   border: 2px solid #6f5f9c;
   width: 800px;
-  height: 400px;
+  height: 550px;
   border-radius: 1rem;
   color: #6f5f9c;
   font-weight: 100;
   font-family: forText;
+
+  a {
+    text-decoration: none;
+    color: #6f5f9c;
+  }
+}
+
+.model-content::-webkit-scrollbar {
+  display: none;
+}
+
+.model-content {
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.model h1 {
+  color: var(--primary);
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  text-transform: capitalize;
+  border-bottom: 3px dashed var(--accent-2); /* Cute divider */
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.model p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+/* Container for buttons inside the Social card */
+.social-links-container {
+  display: flex;
+  flex-direction: column; /* Stacked looks cleaner on small cards */
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sub-link {
+  background-color: var(--white);
+  color: var(--primary);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid var(--accent-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.sub-link:hover {
+  background-color: var(--accent-2);
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+}
+
+.sub-link i {
+  font-size: 1rem;
+  margin-bottom: 0 !important; /* Overriding previous margin */
+}
+
+.model-work .work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.work-item {
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 3px solid var(--primary);
+  text-align: center;
+  box-shadow: 5px 5px 0px rgba(156, 202, 230, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.work-item:hover {
+  transform: translateY(-5px);
+}
+
+.work-item i {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.work-item h3 {
+  color: var(--primary);
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.work-item p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.work-item .highlight {
+  font-size: 1.5rem;
+  color: var(--accent-2);
+}
+
+/* --- About Model (Image + Text) --- */
+.model-about .about-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.profile-img-placeholder {
+  width: 150px;
+  height: 150px;
+  background-color: var(--accent-2);
+  border-radius: 50%;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  color: var(--primary);
+}
+
+/* --- Contact Model (Clean Links) --- */
+.model-contact .contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  border: 3px solid var(--primary);
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: bold;
+  font-size: 1.2rem;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.contact-link:hover {
+  transform: scale(1.01);
+  border-color: var(--accent-2);
+}
+
+.contact-link i {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.contact-link span {
+  color: var(--primary);
+}
+
+/* --- Responsive Media Queries (Updated) --- */
+@media (max-width: 768px) {
+  .model {
+    width: 90%;
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  .model-work .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .model-about .about-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile-img-placeholder {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 425px) {
+  .model-work .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .model h1 {
+    font-size: 2.2rem;
+  }
 }
 
 @media (max-width: 768px) {
   .model {
     width: 700px;
+    height: 400px
   }
 }
 
 @media (max-width: 425px) {
   .model {
     width: 320px;
+    height: 400px
   }
 }
 
 @media (max-width: 320px) {
   .model {
     width: 275px;
+    height: 400px
   }
 }
+
 .exit {
   position: absolute;
   top: -1.5rem;
