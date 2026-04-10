@@ -6,7 +6,7 @@ export const controls = new OrbitControls(camera, renderer.domElement);
 function updateZoomLimits() {
   const isMobile = window.innerWidth < 768;
 
-  controls.minDistance = isMobile ? 5 : 10;   // more zoom in on mobile
+  controls.minDistance = isMobile ? 7 : 10;   // more zoom in on mobile
   controls.maxDistance = isMobile ? 30 : 40;  // less zoom out on mobile
 }
 
