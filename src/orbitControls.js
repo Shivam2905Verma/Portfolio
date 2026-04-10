@@ -1,4 +1,4 @@
-import { OrbitControls } from "./utils/orbitcontrol.js";
+import { OrbitControls } from "./utils/OrbitControl.js";
 import { camera, renderer } from "./setup";
 
 export const controls = new OrbitControls(camera, renderer.domElement);
