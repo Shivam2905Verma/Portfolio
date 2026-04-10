@@ -111,11 +111,13 @@ window.addEventListener("click", handleInteraction);
 window.addEventListener(
   "touchend",
   (e) => {
+    if (e.target.closest("a")) return; // 👈 bail out for anchor tags
+
     const { x, y } = getPointerNDC(e);
     mouse.x = x;
     mouse.y = y;
     handleInteraction();
-     if (e.cancelable) e.preventDefault(); // 👈 only call if allowed
+    if (e.cancelable) e.preventDefault(); // 👈 only call if allowed
   },
   { passive: false },
 );
