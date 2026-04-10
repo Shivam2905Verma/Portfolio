@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { camera, renderer, scene } from "./setup.js";
 import { controls } from "./orbitControls.js";
-import { pointer } from "./eventListners.js";
+import { mouse } from "./eventListners.js";
 import gsap from "gsap";
 import {
   raycasterobjects,
@@ -16,7 +16,7 @@ import { playHoverAnimation } from "./animationFunctions.js";
 export let currentIntersects = [];
 export let currentHoveredObject = null;
 
-const raycaster = new THREE.Raycaster();
+export const raycaster = new THREE.Raycaster();
 const timer = new THREE.Timer();
 
 const music = new Audio("/backgroundMusic/bg1.mp3");
@@ -86,7 +86,7 @@ function animate() {
   controls.update();
 
   //* Raycaster
-  raycaster.setFromCamera(pointer, camera);
+  raycaster.setFromCamera(mouse, camera);
 
   currentIntersects = raycaster.intersectObjects(raycasterobjects);
 

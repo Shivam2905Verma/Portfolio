@@ -1,10 +1,14 @@
 import * as THREE from "three";
 import { videoElement } from "./loadModel.js";
-import { currentIntersects, explicitMuted, setBgMusic } from "./main.js";
-import { camera, renderer, size } from "./setup.js";
+import {
+  currentIntersects,
+  explicitMuted,
+  setBgMusic,
+} from "./main.js";
+import { camera, renderer, size} from "./setup.js";
 import gsap from "gsap";
 
-export const pointer = new THREE.Vector2();
+export const mouse = new THREE.Vector2();
 
 const social_Links = {
   Linkdin: "https://www.linkedin.com/in/shivam-verma-996486346/",
@@ -19,6 +23,7 @@ const contact = document.querySelector(".model-contact");
 const exitBtns = document.querySelectorAll(".exit");
 const musicBtn = document.querySelector(".musicBtn");
 
+
 exitBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -32,7 +37,8 @@ exitBtns.forEach((btn) => {
   });
 });
 
-window.addEventListener("click", () => {
+
+function handleInteraction() {
   if (currentIntersects.length == 0) return;
 
   //* For social media
@@ -77,7 +83,6 @@ window.addEventListener("click", () => {
   //* For speakers
   if (currentIntersects[0].object.name.includes("speaker")) {
     videoElement.muted = !videoElement.muted;
-
     if (!videoElement.muted) {
       videoElement.volume = 0.2;
       setBgMusic(false);
@@ -92,12 +97,48 @@ window.addEventListener("click", () => {
       }
     }
   }
+}
+
+window.addEventListener("click", handleInteraction);
+
+window.addEventListener(
+  "touchend",
+  (e) => {
+    const { x, y } = getPointerNDC(e);
+    mouse.x = x;
+    mouse.y = y;
+    handleInteraction();
+  },
+  { passive: true },
+);
+
+function getPointerNDC(e) {
+  const clientX =
+    e.touches?.[0]?.clientX ?? e.changedTouches?.[0]?.clientX ?? e.clientX;
+  const clientY =
+    e.touches?.[0]?.clientY ?? e.changedTouches?.[0]?.clientY ?? e.clientY;
+  return {
+    x: (clientX / window.innerWidth) * 2 - 1,
+    y: -(clientY / window.innerHeight) * 2 + 1,
+  };
+}
+
+// Before (mousemove only)
+window.addEventListener("mousemove", (e) => {
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
 });
 
-window.addEventListener("mousemove", (e) => {
-  pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
-  pointer.y = -(e.clientY / window.innerHeight) * 2 + 1;
-});
+// After (works for both)
+function updatePointer(e) {
+  const { x, y } = getPointerNDC(e);
+  mouse.x = x;
+  mouse.y = y;
+}
+
+window.addEventListener("mousemove", updatePointer);
+window.addEventListener("touchmove", updatePointer, { passive: true });
+window.addEventListener("touchstart", updatePointer, { passive: true }); // update on tap too
 
 window.addEventListener("resize", () => {
   size.width = window.innerWidth;

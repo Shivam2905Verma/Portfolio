@@ -33,7 +33,6 @@ enterBtn.addEventListener("click", () => {
   t1.to(loading, {
     background: "#ebd7ee",
     onStart: () => {
-      entry.style.display = 0;
       entry.style.display = "none";
       welcome.style.display = "block";
       welcome.style.opacity = 1;

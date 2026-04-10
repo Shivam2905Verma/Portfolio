@@ -98,6 +98,7 @@ body {
   align-items: center;
   font-family: cuteFont;
   border-radius: 2rem;
+  padding: 1rem;
 }
 
 .loadingState {
@@ -147,6 +148,7 @@ body {
 
 .welcome {
   display: none;
+  padding: 0.7rem;
   opacity: 0;
 }
 
@@ -155,5 +157,6 @@ body {
   border: 5px solid #6f5f9c;
   border-radius: 1rem;
   font-size: 4rem;
+  text-align: center;
   color: #6f5f9c;
 }
