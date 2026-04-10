@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/images/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.scss" />
+    <title>portfolio</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div class="loading">
+      <div class="loadingState">loading....</div>
+      <div class="entry">
+        <div class="enter-btn">Enter</div>
+      </div>
+      <div class="welcome">
+        <div class="welcome-text">Hey ! Welcome to my portfolio</div>
+      </div>
+    </div>
+
+    <div class="model-overlay">
+      <div class="model model-work">
+        <h1>This is Work</h1>
+        <div class="exit"><i class="ri-close-large-fill"></i></div>
+      </div>
+      <div class="model model-about">
+        <h1>This is about</h1>
+        <div class="exit"><i class="ri-close-large-fill"></i></div>
+      </div>
+      <div class="model model-contact">
+        <h1>This is contact</h1>
+        <div class="exit"><i class="ri-close-large-fill"></i></div>
+      </div>
+    </div>
+
+    <div class="themeAndMusicbtns">
+
+      <div class="themeAndMusic-btn changeTheme">
+        <i class="ri-moon-fill"></i>
+      </div>
+      <div class="themeAndMusic-btn musicBtn">
+       <i class="ri-volume-up-fill"></i>
+      </div>
+    </div>
+
+    <div class="experience">
+      <canvas class="experience-canvas"></canvas>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
