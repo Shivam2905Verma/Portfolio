@@ -42,8 +42,8 @@ themeAndMusicbtns.forEach((btn) => {
   });
 });
 
-changeThemeBtn.addEventListener("click", () => {
-  const tl = gsap.timeline();
+function handleChnageThemeBtn(){
+const tl = gsap.timeline();
 
   tl.to(changeThemeBtn, {
     scale: 1.7,
@@ -61,4 +61,7 @@ changeThemeBtn.addEventListener("click", () => {
   }
 
   changeTheme();
-});
+}
+
+changeThemeBtn.addEventListener("click", handleChnageThemeBtn);
+changeThemeBtn.addEventListener("touchend", handleChnageThemeBtn);

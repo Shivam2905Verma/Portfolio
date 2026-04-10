@@ -41,7 +41,7 @@ export function backgroundMusic() {
 
 const musicBtn = document.querySelector(".musicBtn");
 
-musicBtn.addEventListener("click", () => {
+function handleMusicBtn() {
   const tl = gsap.timeline();
 
   tl.to(musicBtn, {
@@ -65,7 +65,10 @@ musicBtn.addEventListener("click", () => {
     explicitMuted = true;
     musicBtn.innerHTML = `<i class="ri-volume-mute-fill"></i>`;
   }
-});
+}
+
+musicBtn.addEventListener("click", handleMusicBtn);
+musicBtn.addEventListener("touchend", handleMusicBtn);
 
 //* Time for clock function
 function updateClock(hourHand, minuteHand) {
