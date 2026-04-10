@@ -1,11 +1,7 @@
 import * as THREE from "three";
 import { videoElement } from "./loadModel.js";
-import {
-  currentIntersects,
-  explicitMuted,
-  setBgMusic,
-} from "./main.js";
-import { camera, renderer, size} from "./setup.js";
+import { currentIntersects, explicitMuted, setBgMusic } from "./main.js";
+import { camera, renderer, size } from "./setup.js";
 import gsap from "gsap";
 
 export const mouse = new THREE.Vector2();
@@ -23,7 +19,6 @@ const contact = document.querySelector(".model-contact");
 const exitBtns = document.querySelectorAll(".exit");
 const musicBtn = document.querySelector(".musicBtn");
 
-
 exitBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -37,6 +32,18 @@ exitBtns.forEach((btn) => {
   });
 });
 
+exitBtns.forEach((btn) => {
+  btn.addEventListener("touchend", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    gsap.to(modelOverlay, {
+      scale: 0,
+      duration: 0.3,
+      ease: "power1.out",
+      transformOrigin: "center center",
+    });
+  });
+});
 
 function handleInteraction() {
   if (currentIntersects.length == 0) return;
@@ -108,8 +115,9 @@ window.addEventListener(
     mouse.x = x;
     mouse.y = y;
     handleInteraction();
+     if (e.cancelable) e.preventDefault(); // 👈 only call if allowed
   },
-  { passive: true },
+  { passive: false },
 );
 
 function getPointerNDC(e) {

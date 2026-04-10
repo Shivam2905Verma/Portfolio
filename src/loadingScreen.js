@@ -53,3 +53,35 @@ enterBtn.addEventListener("click", () => {
       },
     });
 });
+
+enterBtn.addEventListener("touchend", () => {
+  backgroundMusic();
+  const t1 = gsap.timeline({
+    defaults: {
+      ease: "back.out(1.8)",
+      duration: 1,
+    },
+  });
+  t1.to(loading, {
+    background: "#ebd7ee",
+    onStart: () => {
+      entry.style.display = "none";
+      welcome.style.display = "block";
+      welcome.style.opacity = 1;
+    },
+  })
+    .to(loading, {
+      scale: 0.7,
+    })
+    .to(loading, {
+      rotateZ: 15,
+    })
+    .to(loading, {
+      bottom: "-150%",
+      onComplete: () => {
+        introAnimation();
+        videoElement.play();
+        loading.remove();
+      },
+    });
+});
