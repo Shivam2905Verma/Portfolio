@@ -53,7 +53,7 @@ body {
   padding: 1rem;
   background-color: #ebd7ee;
   border: 2px solid #6f5f9c;
-  width: 700px;
+  width: 800px;
   height: 400px;
   border-radius: 1rem;
   color: #6f5f9c;
@@ -61,6 +61,23 @@ body {
   font-family: forText;
 }
 
+@media (max-width: 768px) {
+  .model {
+    width: 700px;
+  }
+}
+
+@media (max-width: 425px) {
+  .model {
+    width: 320px;
+  }
+}
+
+@media (max-width: 320px) {
+  .model {
+    width: 275px;
+  }
+}
 .exit {
   position: absolute;
   top: -1.5rem;
@@ -105,8 +122,7 @@ body {
   font-size: 4rem;
 }
 
-
-.themeAndMusicbtns{
+.themeAndMusicbtns {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,7 +144,6 @@ body {
   border: 4px solid #6f5f9c;
   padding: 0.7rem;
 }
-
 
 .enter-btn {
   display: none;
