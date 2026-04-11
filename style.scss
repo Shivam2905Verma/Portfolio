@@ -197,6 +197,10 @@ body {
   align-items: center;
   font-size: 4rem;
   color: var(--primary);
+
+  img{
+    width: 6rem;
+  }
 }
 
 /* --- Contact Model (Clean Links) --- */
@@ -221,6 +225,11 @@ body {
   transition:
     transform 0.2s ease,
     border-color 0.2s ease;
+}
+
+.contact-link span {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-link:hover {
